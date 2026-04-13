@@ -1,2 +1,1 @@
-# Git-Practice-Lab
-Hands-on Git commands practice
+Complete Git commands reference with examples
