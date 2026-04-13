@@ -1,14 +1,8 @@
 # Git Command Cheatsheet
 
-This repository is a structured reference for commonly used Git commands. It is designed to help understand not only what each command does, but also how they fit into a real development workflow.
+This repository is a structured reference for commonly used Git commands and workflows. It is intended to provide a clear understanding of how Git is used in real development environments.
 
-The content is organized into separate sections such as basics, branching, merging, undo operations, and advanced usage. Each section contains concise explanations along with example commands.
-
-This repository can be used as:
-
-* A quick revision guide before interviews
-* A reference while working on projects
-* A learning resource for understanding Git workflows
+The content is divided into focused sections, each covering a specific aspect of Git such as basic commands, branching, merging, undo operations, advanced usage, and collaboration workflows like forking and pull requests.
 
 ---
 
@@ -16,23 +10,26 @@ This repository can be used as:
 
 * `basics.md` – Core commands like init, clone, add, commit
 * `branching.md` – Creating, switching, and deleting branches
-* `merging.md` – Combining work using merge and rebase
-* `undo.md` – Reverting and resetting changes
-* `advanced.md` – Commands like stash, cherry-pick, reflog
-* `cheatsheet.md` – Quick summary of commonly used commands
+* `merging.md` – Merge and rebase operations
+* `undo.md` – Restore, reset, and revert commands
+* `advanced.md` – Stash, cherry-pick, reflog, and more
+* `fork.md` – Forking repositories and upstream sync
+* `pull_request.md` – Creating and managing pull requests
+* `merge_workflow.md` – How merging works in teams
+* `cheatsheet.md` – Quick reference for daily use
 
 ---
 
 ## Typical Git Workflow
 
-In most projects, Git follows a standard cycle:
+A typical development workflow using Git looks like this:
 
-1. Create or clone a repository
-2. Make changes to files
-3. Stage the changes
-4. Commit the changes
-5. Push to a remote repository
-6. Collaborate using branches and merges
+1. Clone or fork a repository
+2. Create a new branch for your work
+3. Make changes and commit them
+4. Push changes to your repository
+5. Create a pull request
+6. Review and merge changes
 
 ---
 
@@ -41,86 +38,68 @@ In most projects, Git follows a standard cycle:
 ```mermaid
 flowchart TD
 
-A[Start] --> B[git init / git clone]
+A[Start] --> B[git clone / git fork]
 
-B --> C[Working Directory]
-C --> D[Modify Files]
+B --> C[Create Branch]
+C --> D[Make Changes]
 
 D --> E[git add]
-E --> F[Staging Area]
+E --> F[git commit]
 
-F --> G[git commit]
-G --> H[Local Repository]
+F --> G[git push]
+G --> H[Pull Request]
 
-H --> I[git push]
-I --> J[Remote Repository]
+H --> I[Code Review]
+I --> J[Merge]
 
-J --> K[git pull / git fetch]
-K --> C
+J --> K[Update Local Repo]
+K --> L[git pull]
 
-H --> L[Create Branch]
-L --> M[git checkout -b feature]
-
-M --> N[Work on Feature]
-N --> O[git add]
-O --> P[git commit]
-
-P --> Q[git merge / git rebase]
-Q --> H
-
-H --> R[Undo Changes]
-R --> S[git restore / git reset / git revert]
-
-H --> T[Advanced Operations]
-T --> U[git stash / git cherry-pick / git reflog]
+L --> C
 ```
 
 ---
 
 ## Key Concepts
 
-### Working Directory
-
-This is where you edit your files. Any changes here are not tracked until staged.
-
-### Staging Area
-
-Files added using `git add` are prepared for the next commit.
-
 ### Repository
 
-The `.git` directory stores all commits, history, and metadata.
+Stores project history, commits, and metadata.
 
-### Branching
+### Branch
 
-Branches allow parallel development without affecting the main codebase.
+Allows independent development without affecting the main codebase.
 
-### Merging and Rebasing
+### Commit
 
-Used to integrate changes from different branches.
+A snapshot of changes saved in the repository.
 
-### Undo Operations
+### Pull Request
 
-Commands like restore, reset, and revert help recover from mistakes.
+A way to propose and review changes before merging.
+
+### Merge
+
+Combines changes from one branch into another.
 
 ---
 
-## How to Use This Repository
+## Usage
 
-1. Read each section file based on the topic
-2. Try commands in a test repository
-3. Refer to the cheatsheet for quick recall
-4. Use the flowchart to understand the overall process
+* Refer to individual files for specific commands
+* Practice commands in a test repository
+* Use the cheatsheet for quick revision
+* Follow the workflow diagram for better understanding
 
 ---
 
 ## Notes
 
-* Always commit frequently with meaningful messages
-* Avoid working directly on the main branch
-* Pull changes before pushing to avoid conflicts
-* Be cautious with commands like `reset --hard`
+* Commit frequently with meaningful messages
+* Use branches for all new features or fixes
+* Sync regularly with the main repository
+* Be cautious with destructive commands like `reset --hard`
 
 ---
 
-This repository is meant to build a clear mental model of how Git works in real development scenarios.
+This repository is intended to serve as both a learning guide and a long-term reference for Git usage.
