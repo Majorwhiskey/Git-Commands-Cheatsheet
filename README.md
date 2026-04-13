@@ -1,8 +1,8 @@
 # Git Command Cheatsheet
 
-This repository is a structured reference for commonly used Git commands and workflows. It is intended to provide a clear understanding of how Git is used in real development environments.
+This repository is a structured reference for commonly used Git commands and workflows. It is designed to help understand both individual commands and how they fit together in real development scenarios.
 
-The content is divided into focused sections, each covering a specific aspect of Git such as basic commands, branching, merging, undo operations, advanced usage, and collaboration workflows like forking and pull requests.
+The content is divided into sections covering basic commands, branching, merging, undo operations, advanced usage, and collaboration workflows such as forking and pull requests.
 
 ---
 
@@ -13,93 +13,130 @@ The content is divided into focused sections, each covering a specific aspect of
 * `merging.md` – Merge and rebase operations
 * `undo.md` – Restore, reset, and revert commands
 * `advanced.md` – Stash, cherry-pick, reflog, and more
-* `fork.md` – Forking repositories and upstream sync
+* `fork.md` – Forking repositories and syncing with upstream
 * `pull_request.md` – Creating and managing pull requests
-* `merge_workflow.md` – How merging works in teams
-* `cheatsheet.md` – Quick reference for daily use
+* `merge_workflow.md` – How merging works in team environments
+* `cheatsheet.md` – Quick reference for daily usage
 
 ---
 
 ## Typical Git Workflow
 
-A typical development workflow using Git looks like this:
+A standard workflow followed in most projects:
 
-1. Clone or fork a repository
-2. Create a new branch for your work
-3. Make changes and commit them
-4. Push changes to your repository
-5. Create a pull request
-6. Review and merge changes
+1. Initialize or clone a repository
+2. Create a branch for new work
+3. Make changes and stage them
+4. Commit changes locally
+5. Push changes to a remote repository
+6. Create a pull request
+7. Review and merge changes
+8. Update local repository
 
 ---
 
-## Flowchart of Git Workflow
+## Flowchart of Git Workflow with Commands
 
 ```mermaid
 flowchart TD
 
-A[Start] --> B[git clone / git fork]
+A[Start] --> B[Initialize or Clone Repository]
+B -->|git init| C[Local Repository Created]
+B -->|git clone| C
 
-B --> C[Create Branch]
-C --> D[Make Changes]
+C --> D[Create New Branch]
+D -->|git checkout -b feature| E[Switch to Feature Branch]
 
-D --> E[git add]
-E --> F[git commit]
+E --> F[Modify Files]
+F --> G[Stage Changes]
+G -->|git add .| H[Staging Area]
 
-F --> G[git push]
-G --> H[Pull Request]
+H --> I[Commit Changes]
+I -->|git commit -m| J[Local Repository Updated]
 
-H --> I[Code Review]
-I --> J[Merge]
+J --> K[Push Changes]
+K -->|git push origin feature| L[Remote Repository Updated]
 
-J --> K[Update Local Repo]
-K --> L[git pull]
+L --> M[Create Pull Request]
 
-L --> C
+M --> N[Code Review Process]
+
+N --> O{Approved?}
+
+O -->|Yes| P[Merge Changes]
+P -->|git merge or GitHub merge| Q[Main Branch Updated]
+
+O -->|No| F
+
+Q --> R[Update Local Main]
+R -->|git checkout main| S[Switch to Main Branch]
+S -->|git pull origin main| T[Local Main Updated]
+
+T --> U[Continue Development]
+
+%% Undo Section
+J --> V[Undo Changes if Needed]
+V -->|git restore| F
+V -->|git reset| C
+V -->|git revert| J
+
+%% Advanced Section
+J --> W[Advanced Operations]
+W -->|git stash| X[Save Temporary Work]
+W -->|git cherry-pick| J
+W -->|git reflog| Y[View History]
 ```
 
 ---
 
 ## Key Concepts
 
+### Working Directory
+
+This is where files are modified. Changes are not tracked until they are staged.
+
+### Staging Area
+
+Files added using `git add` are prepared for commit.
+
 ### Repository
 
-Stores project history, commits, and metadata.
+Stores all commits, history, and project metadata.
 
-### Branch
+### Branching
 
-Allows independent development without affecting the main codebase.
-
-### Commit
-
-A snapshot of changes saved in the repository.
+Allows independent development without affecting the main branch.
 
 ### Pull Request
 
-A way to propose and review changes before merging.
+A mechanism to propose changes and enable code review before merging.
 
-### Merge
+### Merge and Rebase
 
-Combines changes from one branch into another.
+Used to integrate work from different branches.
+
+### Undo Operations
+
+Commands like restore, reset, and revert help recover from mistakes.
 
 ---
 
-## Usage
+## How to Use This Repository
 
-* Refer to individual files for specific commands
-* Practice commands in a test repository
-* Use the cheatsheet for quick revision
-* Follow the workflow diagram for better understanding
+* Read topic-wise files for detailed commands
+* Practice commands in a local repository
+* Use the cheatsheet for quick recall
+* Refer to the workflow diagram to understand the full process
 
 ---
 
 ## Notes
 
 * Commit frequently with meaningful messages
-* Use branches for all new features or fixes
-* Sync regularly with the main repository
-* Be cautious with destructive commands like `reset --hard`
+* Avoid working directly on the main branch
+* Always pull the latest changes before pushing
+* Be cautious with commands like `git reset --hard`
 
 ---
 
-This repository is intended to serve as both a learning guide and a long-term reference for Git usage.
+This repository is intended to serve as a clear and practical reference for learning and applying Git in real-world development.
