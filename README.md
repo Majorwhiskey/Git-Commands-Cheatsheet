@@ -8,14 +8,14 @@ The content is divided into sections covering basic commands, branching, merging
 
 ## Repository Structure
 
-* `basics.md` – Core commands like init, clone, add, commit
-* `branching.md` – Creating, switching, and deleting branches
-* `merging.md` – Merge and rebase operations
-* `undo.md` – Restore, reset, and revert commands
-* `advanced.md` – Stash, cherry-pick, reflog, and more
+* `basics.md` – Core commands: init, clone, add, commit, push, pull, diff, remote, config, .gitignore
+* `branching.md` – Creating, switching, renaming, and deleting branches
+* `merging.md` – Merge, rebase, squash, and conflict resolution
+* `undo.md` – Restore, reset (soft/mixed/hard), and revert commands
+* `advanced.md` – Stash, cherry-pick, reflog, tag, bisect, and more
 * `fork.md` – Forking repositories and syncing with upstream
 * `pull_request.md` – Creating and managing pull requests
-* `merge_workflow.md` – How merging works in team environments
+* `merge_workflow.md` – Merge types and team merge workflow
 * `cheatsheet.md` – Quick reference for daily usage
 
 ---
